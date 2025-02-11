@@ -9,13 +9,18 @@ function showNotification(message) {
 
 const galleries = {
     cultural: ['oft1.jpg', 'oft2.jpg', 'oft3.jpg', 'oft4.jpg', 'oft5.jpg', 'oft6.jpg', 'oft7.jpg', 'oft8.jpg', 't.jpg', 't2.jpg'],
-    mountains: ['of9.jpg', 'of8.jpg', 'ofg11.jpg', 'ofg12.jpg', 'ofg13.jpg', 'of.jpg', 'ofg26.jpg', 'ofg27.jpg', 'ofg28.jpg'],
-    rivers: ['of10.jpg', 'c.jpg', 'm1.jpg', 'm3.jpg', 'm4.jpg', 'm5.jpg', 'm6.jpg', 'm7.jpg', 'm8.jpg', 'r.jpg', 'r_2.jpg''],
+    mountains: ['of9.jpg', 'of8.jpg', 'ofg11.jpg', 'ofg12.jpg', 'ofg13.jpg', 'ofg26.jpg', 'ofg27.jpg', 'ofg28.jpg'],
+    rivers: ['of10.jpg', 'c.jpg', 'm1.jpg', 'm3.jpg', 'm4.jpg', 'm5.jpg', 'm6.jpg', 'm7.jpg', 'm8.jpg', 'r.jpg', 'r(2).jpg'],
 };
 
 function showGallery(category) {
     const galleryContainer = document.getElementById('gallery');
     galleryContainer.innerHTML = '';
+
+    if (!galleries[category]) {
+        showNotification("მონაცემები ვერ მოიძებნა!");
+        return;
+    }
 
     const images = galleries[category];
     images.forEach(image => {
@@ -30,13 +35,6 @@ function showGallery(category) {
     });
 
     showNotification(`გალერეა შეიცვალა: ${category}`);
-    document.getElementById('backButton').style.display = 'block';
-}
-
-function showMainPage() {
-    document.getElementById('gallery').innerHTML = '';
-    showNotification("დაბრუნდით მთავარ გვერდზე");
-    document.getElementById('backButton').style.display = 'none';
 }
 
 function openOverlay(event) {
@@ -48,8 +46,4 @@ function openOverlay(event) {
 
 function closeOverlay() {
     document.getElementById('overlay').classList.remove('active');
-}
-
-function toggleMenu() {
-    document.querySelector('.sidebar').classList.toggle('open');
 }

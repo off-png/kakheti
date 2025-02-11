@@ -30,14 +30,21 @@ function showGallery(category) {
         imgElement.addEventListener('click', openOverlay);
         galleryContainer.appendChild(imgElement);
     });
+
     showNotification(`გალერეა შეიცვალა: ${category}`);
     document.getElementById('backButton').style.display = 'block';
+
+    // დარწმუნდი, რომ overlay გამორთულია
+    closeOverlay();
 }
 
 function showMainPage() {
     document.getElementById('gallery').innerHTML = '';
     showNotification("დაბრუნდით მთავარ გვერდზე");
     document.getElementById('backButton').style.display = 'none';
+
+    // დარწმუნდი, რომ overlay გამორთულია
+    closeOverlay();
 }
 
 function openOverlay(event) {
@@ -51,6 +58,12 @@ function closeOverlay() {
     document.getElementById('overlay').classList.remove('active');
 }
 
+// დარწმუნდი, რომ overlay-ზე დაჭერისას ის იმალება
+document.getElementById('overlay').addEventListener('click', closeOverlay);
+
 function toggleMenu() {
     document.querySelector('.sidebar').classList.toggle('open');
+
+    // დამატებით, დარწმუნდი რომ overlay არ ფარავს ყველაფერს
+    closeOverlay();
 }

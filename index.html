@@ -3,27 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>გალერეა</title>
+    <meta name="description" content="კახეთის ტურისტული და საინტერესო ადგილები. გაეცანით ჩვენს ფოტოებს და მიიღეთ სასარგებლო რჩევები.">
+    <meta name="keywords" content="კახეთი, ტურიზმი, ტური, ფოტოები, საინტერესო ადგილები, საქართველოს ტურიზმი">
+    <title>კახეთის ტურისტული ადგილები</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="notification" class="notification"></div>
 
-    <button onclick="showMainPage()" id="backButton" class="back-button">მთავარ გვერდზე</button>
+    <button class="menu-button" onclick="toggleMenu()">☰ მენიუ</button>
 
     <div class="sidebar">
-        <button onclick="toggleMenu()">☰ მენიუ</button>
-        <ul>
-            <li><button onclick="showGallery('cultural')">კულტურული</button></li>
-            <li><button onclick="showGallery('mountains')">მთები</button></li>
-            <li><button onclick="showGallery('rivers')">მდინარეები</button></li>
+        <h2>კატეგორიები</h2>
+        <ul class="category-list">
+            <li onclick="showGallery('cultural')">კულტურა</li>
+            <li onclick="showGallery('mountains')">მთები</li>
+            <li onclick="showGallery('rivers')">მდინარეები</li>
         </ul>
     </div>
 
-    <div id="gallery" class="gallery"></div>
+    <div class="content">
+        <h1>კახეთის გალერეა</h1>
+        <p>დაათვალიერეთ კახეთის ბუნებრივი სილამაზე!</p>
+        <button id="backButton" class="back-button" onclick="showMainPage()">მთავარ გვერდზე დაბრუნება</button>
+        <div id="gallery" class="gallery"></div>
+    </div>
 
-    <div id="overlay" class="overlay">
-        <img id="overlayImage" src="" alt="სურათი">
+    <div id="notification" class="notification-panel"></div>
+
+    <div id="overlay" class="overlay" onclick="closeOverlay()">
+        <img id="overlayImage" src="" alt="გადიდებული სურათი">
     </div>
 
     <script src="script.js"></script>

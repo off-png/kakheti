@@ -1,120 +1,35 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    background-image: url('images/bg.jpg'); /* დარწმუნდი, რომ ეს ფაილი არსებობს */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-color: #222;
     color: white;
     text-align: center;
-}
-
-.sidebar {
-    position: fixed;
-    left: -250px;
-    top: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #333;
-    padding: 20px;
-    overflow-y: auto;
-    transition: left 0.3s ease-in-out;
-}
-
-.sidebar.open {
-    left: 0;
-}
-
-.menu-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: #333;
-    color: white;
-    padding: 10px;
-    border: none;
-    font-size: 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.category-list {
-    list-style: none;
+    margin: 0;
     padding: 0;
 }
 
-.category-list li {
-    margin: 15px 0;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.category-list li:hover {
-    color: #ddd;
+.sidebar {
+    background-color: rgba(0, 0, 0, 0.5); /* ნახევრად გამჭვირვალე */
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
 }
 
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
     padding: 20px;
-    margin-top: 20px;
 }
 
 .gallery img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
+    max-width: 300px; /* ყველა ფოტო ერთნაირი ზომის იყოს */
+    height: auto;
     border-radius: 10px;
-    border: 3px solid white;
-    cursor: pointer;
-    transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
 }
 
 .gallery img:hover {
-    transform: scale(1.05);
-}
-
-.notification-panel {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 15px;
-    border-radius: 5px;
-    min-width: 200px;
-    text-align: center;
-    display: none;
-}
-
-.back-button {
-    display: none;
-    margin-bottom: 20px;
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #f04;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-
-.overlay.active {
-    display: flex;
-}
-
-.overlay img {
-    max-width: 90%;
-    max-height: 90%;
+    transform: scale(1.1); /* მაუსზე მიახლოებისას გაიზრდება */
 }

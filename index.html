@@ -3,35 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="კახეთის ტურისტული და საინტერესო ადგილები. გაეცანით ჩვენს ფოტოებს და მიიღეთ სასარგებლო რჩევები.">
-    <meta name="keywords" content="კახეთი, ტურიზმი, ტური, ფოტოები, საინტერესო ადგილები, საქართველოს ტურიზმი">
-    <title>კახეთის ტურისტული ადგილები</title>
+    <title>გალერეა</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="notification" class="notification"></div>
 
-    <button class="menu-button" onclick="toggleMenu()">☰ მენიუ</button>
+    <button onclick="showMainPage()" id="backButton" class="back-button">მთავარ გვერდზე</button>
 
     <div class="sidebar">
-        <h2>კატეგორიები</h2>
-        <ul class="category-list">
-            <li onclick="showGallery('cultural')">ტყე</li>
-            <li onclick="showGallery('mountains')">მთა ბორცვი</li>
-            <li onclick="showGallery('rivers')">მდინარე ტბა</li>
+        <button onclick="toggleMenu()">☰ მენიუ</button>
+        <ul>
+            <li><button onclick="showGallery('cultural')">კულტურული</button></li>
+            <li><button onclick="showGallery('mountains')">მთები</button></li>
+            <li><button onclick="showGallery('rivers')">მდინარეები</button></li>
         </ul>
     </div>
 
-    <div class="content">
-        <h1>სატესტო ვერსია</h1>
-        <p>გალერეა შეიცვლის სურათებს შესაბამისი კატეგორიის მიხედვით.</p>
-        <button id="backButton" class="back-button" onclick="showMainPage()">მთავარ გვერდზე დაბრუნება</button>
-        <div id="gallery" class="gallery"></div>
-    </div>
+    <div id="gallery" class="gallery"></div>
 
-    <div id="notification" class="notification-panel">მოხმარებლის შეტყობინება</div>
-
-    <div id="overlay" class="overlay" onclick="closeOverlay()">
-        <img id="overlayImage" src="" alt="გადიდებული სურათი">
+    <div id="overlay" class="overlay">
+        <img id="overlayImage" src="" alt="სურათი">
     </div>
 
     <script src="script.js"></script>

@@ -75,57 +75,6 @@
         .gallery img:hover {
             transform: scale(1.05);
         }
-
-        .notification-panel {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            min-width: 200px;
-            text-align: center;
-            display: none;
-        }
-
-        .back-button {
-            display: none;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 18px;
-            background-color: #f04;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .back-button:hover {
-            background-color: #c03;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .overlay img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-        }
-
-        .overlay.active {
-            display: flex;
-        }
     </style>
 </head>
 <body>
@@ -146,32 +95,22 @@
         <div id="gallery" class="gallery"></div>
     </div>
 
-    <div id="notification" class="notification-panel">მოხმარებლის შეტყობინება</div>
-
-    <div id="overlay" class="overlay" onclick="closeOverlay()">
-        <img id="overlayImage" src="" alt="გადიდებული სურათი">
-    </div>
-
     <script>
-        function showNotification(message) {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.style.display = 'block';
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
-        }
-
         const galleries = {
             cultural: ['oft1.jpg', 'oft2.jpg', 'oft3.jpg', 'oft4.jpg', 'oft5.jpg', 'oft7.jpg', 't.jpg', 't2.jpg'],
             mountains: ['of9.jpg', 'of8.jpg', 'ofg11.jpg', 'ofg12.jpg', 'ofg13.jpg', 'ofg27.jpg', 'ofg28.jpg'],
-            rivers: ['of10.jpg', 'c.jpg', 'm3.jpg', 'm4.jpg', 'm5.jpg', 'm6.jpg', 'm7.jpg', 'm8.jpg',],
+            rivers: ['of10.jpg', 'c.jpg', 'm3.jpg', 'm4.jpg', 'm5.jpg', 'm6.jpg', 'm7.jpg', 'm8.jpg'],
+            main: []
         };
+
+        for (let i = 1; i <= 40; i++) {
+            galleries.main.push(`zegli${i}.jpg`);
+        }
 
         function showGallery(category) {
             const galleryContainer = document.getElementById('gallery');
             galleryContainer.innerHTML = '';
-
+            
             const images = galleries[category];
             images.forEach(image => {
                 const imgElement = document.createElement('img');
@@ -180,30 +119,11 @@
                 imgElement.onerror = function() {
                     this.src = 'images/default.jpg';
                 };
-                imgElement.addEventListener('click', openOverlay);
                 galleryContainer.appendChild(imgElement);
             });
-
-            showNotification(`გალერეა შეიცვალა: ${category}`);
-            document.getElementById('backButton').style.display = 'block';
         }
 
-        function showMainPage() {
-            document.getElementById('gallery').innerHTML = '';
-            showNotification("დაბრუნდით მთავარ გვერდზე");
-            document.getElementById('backButton').style.display = 'none';
-        }
-
-        function openOverlay(event) {
-            const overlay = document.getElementById('overlay');
-            const overlayImage = document.getElementById('overlayImage');
-            overlayImage.src = event.target.src;
-            overlay.classList.add('active');
-        }
-
-        function closeOverlay() {
-            document.getElementById('overlay').classList.remove('active');
-        }
+        showGallery('main');
     </script>
 
 </body>

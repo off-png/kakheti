@@ -37,13 +37,6 @@ function showGallery(category) {
     showNotification(`გალერეა შეიცვალა: ${category}`);
 }
 
-function openOverlay(event) {
-    const overlay = document.getElementById('overlay');
-    const overlayImage = document.getElementById('overlayImage');
-    overlayImage.src = event.target.src;
-    overlay.classList.add('active');
-}
-
 function closeOverlay() {
     document.getElementById('overlay').classList.remove('active');
 }

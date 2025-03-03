@@ -1,12 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #222;
-    color: white;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
 .sidebar {
     background-color: rgba(0, 0, 0, 0.5); /* ნახევრად გამჭვირვალე */
     padding: 20px;

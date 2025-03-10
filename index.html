@@ -68,10 +68,22 @@
             border: 2px solid white;
             transition: transform 0.3s ease-in-out;
             cursor: pointer;
+            position: relative;
         }
 
         .gallery img:hover {
             transform: scale(1.05);
+        }
+
+        .watermark {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 2px 5px;
+            font-size: 12px;
+            border-radius: 5px;
         }
 
         .full-screen {
@@ -140,11 +152,21 @@
             galleryContainer.innerHTML = '';
             
             galleries[category].forEach(image => {
+                const imgWrapper = document.createElement('div');
+                imgWrapper.style.position = 'relative';
+                
                 const imgElement = document.createElement('img');
                 imgElement.src = `images/${image}`;
                 imgElement.loading = "lazy";
                 imgElement.onclick = function() { openFullScreen(this.src); };
-                galleryContainer.appendChild(imgElement);
+                
+                const watermark = document.createElement('div');
+                watermark.classList.add('watermark');
+                watermark.innerText = 'D.U';
+                
+                imgWrapper.appendChild(imgElement);
+                imgWrapper.appendChild(watermark);
+                galleryContainer.appendChild(imgWrapper);
             });
         }
 

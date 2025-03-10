@@ -15,7 +15,40 @@
             text-align: center;
         }
 
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .category-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .category-list li {
+            margin: 15px 0;
+            cursor: pointer;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .category-list li:hover {
+            color: #ddd;
+        }
+
         .content {
+            margin-left: 270px;
             padding: 20px;
         }
 
@@ -70,8 +103,17 @@
     </style>
 </head>
 <body>
+    <div class="sidebar">
+        <h2>მთავარი გვერდი</h2>
+        <ul class="category-list">
+            <li onclick="showGallery('cultural')">ტყე</li>
+            <li onclick="showGallery('mountains')">მთა</li>
+            <li onclick="showGallery('rivers')">მდინარე ტბა</li>
+        </ul>
+    </div>
+
     <div class="content">
-        <h1>ადგილები კახეთში-Places in Kakheti</h1>
+        <h1>ადგილები კახეთში</h1>
         <button id="backButton" onclick="showMainPage()">მთავარ გვერდზე დაბრუნება</button>
         <div id="gallery" class="gallery"></div>
     </div>

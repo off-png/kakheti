@@ -10,7 +10,10 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            background-color: #000;
+            background-image: url('images/of1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: white;
             text-align: center;
         }
@@ -19,28 +22,26 @@
             position: fixed;
             left: 0;
             top: 0;
-            width: 250px;
-            height: 100%;
+            width: 100%;
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .sidebar h2 {
-            text-align: center;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
         .category-list {
+            display: flex;
             list-style: none;
             padding: 0;
+            margin: 0;
         }
 
         .category-list li {
-            margin: 15px 0;
             cursor: pointer;
             font-size: 18px;
-            text-align: center;
+            padding: 10px 15px;
         }
 
         .category-list li:hover {
@@ -48,7 +49,7 @@
         }
 
         .content {
-            margin-left: 270px;
+            margin-top: 60px;
             padding: 20px;
         }
 
@@ -104,7 +105,6 @@
 </head>
 <body>
     <div class="sidebar">
-        <h2>მთავარი გვერდი</h2>
         <ul class="category-list">
             <li onclick="showGallery('cultural')">ტყე</li>
             <li onclick="showGallery('mountains')">მთა</li>

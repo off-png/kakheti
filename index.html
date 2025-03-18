@@ -16,114 +16,7 @@
       gtag('config', 'G-03F95DKLCK');
     </script>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-image: url('images/of1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            text-align: center;
-        }
-
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 10px 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .category-list {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .category-list li {
-            cursor: pointer;
-            font-size: 18px;
-            padding: 10px 15px;
-        }
-
-        .category-list li:hover {
-            color: #ddd;
-        }
-
-        .content {
-            margin-top: 60px;
-            padding: 20px;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            padding: 10px;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 10px;
-            border: 2px solid white;
-            transition: transform 0.3s ease-in-out;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-
-        .watermark {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 2px 5px;
-            font-size: 12px;
-            border-radius: 5px;
-        }
-
-        .full-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-
-        .full-screen img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 30px;
-            color: white;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css"> <!-- ცალკე CSS ფაილი -->
 </head>
 <body>
     <div class="sidebar">
@@ -145,6 +38,23 @@
         <img id="fullScreenImage" src="" alt="Full Size">
     </div>
 
+    <!-- ✅ საკონტაქტო ფორმა -->
+    <div class="contact-form">
+        <h2>Contact Us - დაგვიკავშირდით</h2>
+        <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
+            <label for="name">სახელი:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">ელ. ფოსტა:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">შეტყობინება:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">გაგზავნა</button>
+        </form>
+    </div>
+
     <script>
         const galleries = {
             cultural: ['oft1.jpg', 'oft2.jpg', 'oft3.jpg', 'oft4.jpg', 'oft5.jpg', 'oft7.jpg', 't.jpg', 't2.jpg'],
@@ -160,20 +70,20 @@
         function showGallery(category) {
             const galleryContainer = document.getElementById('gallery');
             galleryContainer.innerHTML = '';
-            
+
             galleries[category].forEach(image => {
                 const imgWrapper = document.createElement('div');
                 imgWrapper.style.position = 'relative';
-                
+
                 const imgElement = document.createElement('img');
                 imgElement.src = `images/${image}`;
                 imgElement.loading = "lazy";
                 imgElement.onclick = function() { openFullScreen(this.src); };
-                
+
                 const watermark = document.createElement('div');
                 watermark.classList.add('watermark');
                 watermark.innerText = 'D.U';
-                
+
                 imgWrapper.appendChild(imgElement);
                 imgWrapper.appendChild(watermark);
                 galleryContainer.appendChild(imgWrapper);

@@ -100,6 +100,18 @@
     border-radius: 5px;
     font-size: 16px;
 }
+.category-list li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    display: block;
+}
+
+.category-list li a:hover {
+    color: #ddd;
+}
+
 
 .contact-form button:hover {
     background: #218838;
